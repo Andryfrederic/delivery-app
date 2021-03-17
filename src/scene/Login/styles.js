@@ -8,8 +8,8 @@ export const { Black, White, Green, Concrete } = Colors;
 export const styles = StyleSheet.create({
   titleTextStyle: {
     fontFamily: Fonts.LatoBold,
-    fontSize: 25,
-    marginBottom: 25,
+    fontSize: 15,
+    marginBottom: 10,
     marginTop: 10,
     color: ComponentColors.TextColorDark
   },

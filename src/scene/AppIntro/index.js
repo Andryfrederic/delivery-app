@@ -8,7 +8,6 @@ import {
   TouchableHighlight
 } from "react-native";
 import Swiper from "react-native-swiper";
-import SplashScreen from "react-native-splash-screen";
 
 import { ComponentColors, Colors } from "../../styles/BrandColors";
 import Fonts from "../../styles/Fonts";

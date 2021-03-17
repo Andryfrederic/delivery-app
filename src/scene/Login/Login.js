@@ -36,7 +36,7 @@ class Login extends Component {
         <View style={{ flex: 0.8 }}>
           <ImageBackground
             source={require("../../../assets/images/food_photography.jpg")}
-            style={{ flex: 1 }}
+            style={{ flex: 2.5/3 }}
           >
             <TouchableOpacity
               style={skipButtonContainerStyle}
@@ -57,10 +57,10 @@ class Login extends Component {
           style={{
             flex: 0.15,
             backgroundColor: White.core,
-            paddingHorizontal: 20
+            paddingHorizontal: 10
           }}
         >
-          <Text style={titleTextStyle}>Get started with Eatsy</Text>
+          <Text style={[titleTextStyle,{textAlign:'center'}]}>Get started with Eatsy</Text>
           <TouchableHighlight
             onPress={onPressLoginButton}
             underlayColor="transparent"

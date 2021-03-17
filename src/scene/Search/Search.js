@@ -5,7 +5,10 @@ import {
   FlatList,
   TextInput,
   TouchableHighlight,
-  ImageBackground
+  ImageBackground,
+  Image,
+  Modal,
+  Dimensions
 } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -14,7 +17,8 @@ import { styles, Black } from "./styles";
 import Fonts from "../../styles/Fonts";
 
 import Divider from "../../components/Divider";
-
+const wp = Dimensions.get("window").width/100;
+const hp = Dimensions.get("window").height/100
 const {
   labelStyle,
   inputTextStyle,
@@ -23,6 +27,20 @@ const {
 } = styles;
 
 class Search extends Component {
+  constructor(props){
+    super(props)
+    this.state={  
+        data:[] 
+                }
+        this.arrayholder = this.props.categoryList;
+                        }
+
+componentDidMount(){
+  const { categoryList } = this.props;
+  this.setState({
+    data:categoryList
+  })
+}
   keyExtractor = (item, index) => index.toString();
 
   renderCategoryCard = ({ item, index }) => {
@@ -32,15 +50,26 @@ class Search extends Component {
         : { marginLeft: 10, marginRight: 5 };
 
     return (
-      <TouchableHighlight underlayColor="transparent">
+      <TouchableHighlight underlayColor="transparent"
+      onPress={()=>alert(item.title+' '+'Clicked')}>
         <View
-          style={[{ flexDirection: "column", marginVertical: 10 }, cardMargin]}
+          style={[{ flexDirection: "row", marginVertical: 10,width:300,backgroundColor:'white' }, cardMargin]}
         >
-          <ImageBackground source={item.imageURL} style={categoryImageStyle}>
-            <View style={semitransparentViewStyle}>
-              <Text style={labelStyle}>{item.title}</Text>
+          <Image source={item.imageURL} style={categoryImageStyle} />
+            <View style={[semitransparentViewStyle,{marginLeft:2}]}>
+                <Text style={[labelStyle,{color:'black'}]}>{item.title}</Text>
+                <View style={{
+                  // width:100
+                }}>
+                    <Text
+                    style={{
+                      textAlign:'justify'
+                    }}>
+                    De très nombreux exemples de phrases traduites contenant "category" –
+                    </Text>
+                </View>
             </View>
-          </ImageBackground>
+          
         </View>
       </TouchableHighlight>
     );
@@ -52,13 +81,13 @@ class Search extends Component {
     const { categoryList } = this.props;
 
     return (
-      <View style={{ alignSelf: "center", flex: 1 }}>
+      <View style={{ alignSelf: 'flex-start', flex: 1 }}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={categoryList}
+          data={this.state.data}
           renderItem={this.renderCategoryCard}
           keyExtractor={this.keyExtractor}
-          numColumns={2}
+          // numColumns={1}
         />
       </View>
     );
@@ -76,14 +105,29 @@ class Search extends Component {
         <TextInput
           placeholder="Search..."
           style={inputTextStyle}
+          ref={(input) => { this.searchInput1 = input; }}
           maxLength={50}
           numberOfLines={1}
           underlineColorAndroid="transparent"
-          //autoFocus
+          onChangeText={text => this.searchFilterFunction(text)}
+          autoFocus
         />
       </View>
     );
   };
+  searchFilterFunction = text => {
+    this.setState({
+      value: text,
+    });
+          const newData = this.arrayholder.filter(item =>{
+          const itemData = `${item.title.toUpperCase()}`;
+          const textData = text.toUpperCase();
+          return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      data: newData,
+    });
+  }
 
   render() {
     return (
@@ -94,14 +138,32 @@ class Search extends Component {
           style={{
             fontFamily: Fonts.LatoBold,
             fontSize: 16,
-            margin: 15,
+            margin: 10,
             color: Black.tint75Percent
           }}
         >
           Top Categories
         </Text>
         {this.renderCategories()}
+
+        <Modal 
+    transparent={true}
+    animationType="fade"
+    visible={true}
+    // onShow={() => { this.searchInput3.focus(); }}
+    >
+          <View
+          style={{
+            width:wp*100,
+            height:hp*80,
+            // backgroundColor:'grey'
+          }}>
+           
+          </View>
+</Modal>
+
       </SafeAreaView>
+      
     );
   }
 }

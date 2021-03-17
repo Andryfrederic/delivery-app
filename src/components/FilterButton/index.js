@@ -30,7 +30,7 @@ const FilterButton = ({
             name={iconName}
             type={iconType}
             color={TextColorDark}
-            size={25}
+            size={15}
             containerStyle={{ marginTop: 5, marginLeft: 5 }}
           />
         ) : null}

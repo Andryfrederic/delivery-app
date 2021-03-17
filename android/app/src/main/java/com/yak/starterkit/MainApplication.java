@@ -12,7 +12,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.yak.BuildConfig;
 // react-native-splash-screen >= 0.3.1
-import org.devio.rn.splashscreen.SplashScreenReactPackage;
 // react-native-splash-screen < 0.3.1
 
 import java.util.List;
@@ -29,7 +28,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       @SuppressWarnings("UnnecessaryLocalVariable")
       List<ReactPackage> packages = new PackageList(this).getPackages();
-     new SplashScreenReactPackage();
       // Packages that cannot be autolinked yet can be added manually here, for example:
       return packages;
     }

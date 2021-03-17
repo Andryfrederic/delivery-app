@@ -6,26 +6,28 @@ import { ComponentColors, Colors } from "../../styles/BrandColors";
 
 export const { White, Black } = Colors;
 
-const imageViewWidth = screenWidth / 2.3;
+const imageViewWidth = screenWidth /4;
 const imageViewHeight = imageViewWidth;
 
 export const styles = StyleSheet.create({
   categoryImageStyle: {
-    width: imageViewWidth,
-    height: imageViewHeight,
-    alignSelf: "center"
+    width: 70,
+    height: 70,
+    alignSelf:'flex-start'
   },
   semitransparentViewStyle: {
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    backgroundColor: ComponentColors.SemiTransparentDarkOverlay
+    backgroundColor:'#FAEFF3',
+    paddingLeft:5
+    //  ComponentColors.SemiTransparentDarkOverlay
   },
   labelStyle: {
     fontFamily: Fonts.LatoBold,
     fontSize: 16,
     color: White.core,
-    position: "absolute"
+    // position: "absolute"
   },
   inputTextStyle: {
     fontFamily: Fonts.LatoRegular,
