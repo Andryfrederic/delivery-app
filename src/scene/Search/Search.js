@@ -149,7 +149,7 @@ componentDidMount(){
         <Modal 
     transparent={true}
     animationType="fade"
-    visible={true}
+    visible={false}
     // onShow={() => { this.searchInput3.focus(); }}
     >
           <View

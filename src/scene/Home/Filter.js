@@ -308,26 +308,36 @@ class Filter extends Component {
             backgroundColor: "rgba(60, 60, 60, 0.5)"
           }}
         >
-          <TouchableOpacity style={{ flex: 1 }} onPressOut={onPressFilter} />
+          <TouchableOpacity  onPressOut={onPressFilter} />
+      
         </SafeAreaView>
+       
         <SafeAreaView
           style={{
             flex: visibleFilterType ? 0.5 : 0.9,
             backgroundColor: White.core
           }}
         >
+              <Icon
+            name="close"
+            type="material"
+            color={Black.tint75Percent}
+            size={35}
+            iconStyle={{ alignSelf: "flex-start", padding: 25,bottom:10 }}
+            onPress={onPressFilter}
+          />
           <View
             style={{
               justifyContent: "space-between",
               flex: 1,
-              padding: 25
+              padding: 10
             }}
           >
             {this.renderFilterContent()}
             <Button
               label="Apply Filter"
               onPress={onPressFilter}
-              containerStyle={{ marginVertical: 10 }}
+              containerStyle={{ marginVertical: 3,position:'absolute',bottom:0,alignSelf:'center' }}
             />
           </View>
         </SafeAreaView>
